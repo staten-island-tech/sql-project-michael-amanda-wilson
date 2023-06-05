@@ -16,7 +16,7 @@
 
       <div class="nav">
         <nav>
-          <RouterLink to="/harulogin">LOGIN</RouterLink>
+          <RouterLink to="/harulogin">ACCOUNT</RouterLink>
 
           <RouterLink to="/harupics">COLLECTION</RouterLink>
 
