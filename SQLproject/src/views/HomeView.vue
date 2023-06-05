@@ -12,14 +12,18 @@
       <header>
         <div class="container">
           <div class="logo">
-            <h1>KOLLECT-IT</h1>
+            <h1>HARU OCASSIONALLY</h1>
           </div>
 
-          <nav>
-            <RouterLink to="/BigAmongus">LOGIn</RouterLink>
+          <div class="li">
+            <nav>
+              <RouterLink to="/harulogin">LOGIN</RouterLink>
 
-            <RouterLink to="/harupics">Haru Feet Pics</RouterLink>
-          </nav>
+              <RouterLink to="/harupics">COLLECTION</RouterLink>
+
+              <RouterLink to="/haruabout">ABOUT</RouterLink>
+            </nav>
+          </div>
         </div>
       </header>
       <main>
@@ -27,7 +31,7 @@
           <p>- -</p>
         </div>
         <div class="design-btn">
-          <h1>EXPLORE + CREATE</h1>
+          <h1>EXPLORE + COLLECT</h1>
         </div>
         <div class="navigation">
           <div class="next-prev">
@@ -148,8 +152,8 @@ header {
 }
 
 .logo {
+  align-self: center;
 }
-
 .ham-menu {
   display: none;
 }
@@ -157,6 +161,8 @@ header {
 nav {
   width: 60%;
   transform: translateY(0) translateX(0);
+  display: flex;
+  flex-direction: row;
 }
 
 .nav-class {
@@ -165,20 +171,22 @@ nav {
 
 nav ul {
   display: flex;
-  list-style: none;
+  flex-direction: row;
+
   justify-content: space-evenly;
 }
 
-li a {
+.li a {
   text-decoration: none;
   color: black;
   padding: 2px 8px;
   position: relative;
   font-size: 1.1rem;
   letter-spacing: 1px;
+  margin: 20px 30px;
 }
 
-li a::before {
+.li a::before {
   content: '';
   position: absolute;
   bottom: 0;
@@ -187,7 +195,8 @@ li a::before {
   width: 0;
   transition: 0.4s ease-in;
 }
-li a::after {
+
+.li a::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -197,7 +206,7 @@ li a::after {
   transition: 0.4s ease-in;
 }
 
-li a:hover::before {
+.li a:hover::before {
   content: '';
   position: absolute;
   bottom: 0;
@@ -206,7 +215,8 @@ li a:hover::before {
   width: 50%;
   border-bottom: 1px solid #000;
 }
-li a:hover::after {
+
+.li a:hover::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -227,7 +237,7 @@ main {
   position: relative;
   background-color: red;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url(https://images.pexels.com/photos/279719/pexels-photo-279719.jpeg?cs=srgb&dl=apartment-chair-clean-contemporary-279719.jpg&fm=jpg);
+    url(https://pbs.twimg.com/profile_banners/1589797891287162880/1679715185/1500x500);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -235,7 +245,7 @@ main {
 
 .navigation {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .next-prev {
@@ -333,259 +343,5 @@ main .design-btn h1:hover::after {
 
 .home-footer {
   height: 20vh;
-}
-
-@media screen and (max-width: 991px) {
-  nav {
-    width: 75%;
-  }
-}
-@media screen and (max-width: 767px) {
-  body {
-    overflow: hidden;
-  }
-
-  header {
-    height: 15vh;
-    position: relative;
-  }
-
-  header .container {
-    height: 100%;
-    width: 90%;
-    margin: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Nunito', sans-serif;
-  }
-
-  .ham-menu {
-    display: block;
-  }
-
-  nav {
-    display: none;
-  }
-
-  .container .nav-class {
-    display: block;
-    position: absolute;
-    background-color: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(5px);
-    right: 0;
-    bottom: 0;
-    transform: translateY(100%) translateX(100%);
-    z-index: 10;
-    height: 85vh;
-    width: 50%;
-    transition: 0.3s linear;
-  }
-
-  .nav-class ul {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .nav-class ul li {
-    margin: 20px;
-  }
-
-  li a::before {
-    content: '';
-    position: relative;
-    bottom: 0;
-    left: 0;
-    height: 100%;
-    width: 0;
-  }
-  li a::after {
-    content: '';
-    position: relative;
-    bottom: 0;
-    left: 0;
-    height: 100%;
-    width: 0;
-  }
-  li a:hover::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    border-bottom: 1px solid #000;
-  }
-  li a:hover::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 100%;
-    width: 0;
-  }
-
-  main {
-    height: 65vh;
-  }
-
-  main .design-btn {
-    margin-top: 200px;
-    text-align: center;
-    color: #ffffff;
-  }
-
-  main .design-btn h1 {
-    font-family: 'Nunito', sans-serif;
-    letter-spacing: 3px;
-    display: inline-block;
-    padding: 5px 10px;
-    position: relative;
-    cursor: pointer;
-    font-size: 1.3rem;
-  }
-
-  .next-prev {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 10px;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-  }
-
-  main .some-quote {
-    text-align: center;
-    padding-top: 50px;
-    font-family: 'Dancing Script', cursive;
-    color: #ffffff;
-    font-size: 1.4rem;
-  }
-}
-@media screen and (max-width: 575px) {
-  body {
-    overflow: hidden;
-  }
-
-  header {
-    height: 15vh;
-    position: relative;
-  }
-
-  header .container {
-    height: 100%;
-    width: 90%;
-    margin: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Nunito', sans-serif;
-  }
-
-  .ham-menu {
-    display: block;
-  }
-
-  nav {
-    display: none;
-  }
-
-  .container .nav-class {
-    display: block;
-    position: absolute;
-    background-color: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(5px);
-    right: 0;
-    bottom: 0;
-    transform: translateY(100%) translateX(100%);
-    z-index: 10;
-    height: 85vh;
-    width: 50%;
-    transition: 0.3s linear;
-  }
-
-  .nav-class ul {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .nav-class ul li {
-    margin: 20px;
-  }
-
-  li a::before {
-    content: '';
-    position: relative;
-    bottom: 0;
-    left: 0;
-    height: 100%;
-    width: 0;
-  }
-  li a::after {
-    content: '';
-    position: relative;
-    bottom: 0;
-    left: 0;
-    height: 100%;
-    width: 0;
-  }
-  li a:hover::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    border-bottom: 1px solid #000;
-  }
-  li a:hover::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 100%;
-    width: 0;
-  }
-
-  main {
-    height: 65vh;
-  }
-
-  main .design-btn {
-    margin-top: 200px;
-    text-align: center;
-    color: #ffffff;
-  }
-
-  main .design-btn h1 {
-    font-family: 'Nunito', sans-serif;
-    letter-spacing: 3px;
-    display: inline-block;
-    padding: 5px 10px;
-    position: relative;
-    cursor: pointer;
-    font-size: 1.1rem;
-  }
-
-  .next-prev {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 10px;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-  }
-
-  main .some-quote {
-    text-align: center;
-    padding-top: 50px;
-    font-family: 'Dancing Script', cursive;
-    color: #ffffff;
-    font-size: 1.4rem;
-  }
 }
 </style>

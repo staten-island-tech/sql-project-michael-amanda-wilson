@@ -16,15 +16,21 @@ const router = createRouter({
     },
 
     {
-      path: '/bigamongus',
-      name: 'bigamongus',
-      component: () => import('../views/BigAmongus.vue')
+      path: '/harulogin',
+      name: 'harulogin',
+      component: () => import('../views/harulogin.vue')
     },
 
     {
       path: '/harupics',
       name: 'harupics',
       component: () => import('../views/harupics.vue')
+    },
+
+    {
+      path: '/haruabout',
+      name: 'haruabout',
+      component: () => import('../views/haruabout.vue')
     }
   ]
 })
