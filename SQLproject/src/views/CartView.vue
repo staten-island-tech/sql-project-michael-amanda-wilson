@@ -26,11 +26,37 @@
         </div>
       </div>
     </header>
+
+    <div class="display">
+      <div v-for="haru in store.harus">
+        <div class="display-card"><img class="display-img" v-bind:src="haru.image" /></div>
+
+        <div class="description">
+          <h3 class="display-title">{{ haru.name }}</h3>
+          <h4 class="display-price">${{ haru.price }}</h4>
+          <button class="btn" @click="AddCart(haru.price)">ADD TO CART</button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
-<script>
-export default {}
+<script setup>
+import { supabase } from '../lib/supabaseClient.js'
+import { ref, onMounted } from 'vue'
+import { useCounterStore } from '../stores/counter'
+const store = useCounterStore()
+async function getharu() {
+  const { data } = await supabase.from('haru').select()
+  store.harus = data
+}
+
+async function AddCart(x) {
+  store.cartTotal = store.cartTotal + x
+}
+getharu()
+console.log(store.harus)
+getharu()
 </script>
 
 <style scoped>
