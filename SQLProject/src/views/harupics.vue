@@ -45,12 +45,21 @@ getharu()
       </div>
     </header>
 
-    <h1>{{ store.cartTotal }}</h1>
+    <div class="window">
+      <h1>${{ store.cartTotal }}</h1>
+      <div class="line"></div>
+    </div>
 
-    <div v-for="haru in store.harus">
-      <h3>{{ haru.name }}</h3>
-      <img v-bind:src="haru.image" />
-      <button @click="AddCart(haru.price)">Add To Cart</button>
+    <div class="display">
+      <div v-for="haru in store.harus">
+        <div class="display-card"><img class="display-img" v-bind:src="haru.image" /></div>
+
+        <div class="description">
+          <h3 class="display-title">{{ haru.name }}</h3>
+          <h4 class="display-price">{{ haru.price }}</h4>
+          <button class="btn" @click="AddCart(haru.price)">ADD TO CART</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -63,6 +72,39 @@ getharu()
   justify-content: space-evenly;
   align-items: center;
   font-family: 'Nunito', sans-serif;
+}
+.window {
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  font-family: 'Nunito', sans-serif;
+}
+
+.display {
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 90vw;
+  height: fit-content;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: auto;
+  box-sizing: border-box;
+  align-items: center;
+  background-color: #56565636;
+  border-radius: 30px;
+  padding: 3rem;
+  font-family: 'Nunito', sans-serif;
+}
+
+.line {
+  background-color: black;
+  margin: 1px;
+  width: 60rem;
+  height: 6px;
+  align-content: center;
 }
 
 .logo {
@@ -123,5 +165,37 @@ getharu()
 
 .active-link {
   font-weight: 700;
+}
+
+.display-card,
+.description {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border-radius: 20px;
+  padding: 2rem;
+  justify-content: space-around;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+}
+.display-img {
+  width: 19.4rem;
+  height: 30rem;
+  justify-content: space-around;
+  border-radius: 30px;
+  transition: all 0.2s;
+}
+.display-title,
+.display-release {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.display-img:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
 }
 </style>
