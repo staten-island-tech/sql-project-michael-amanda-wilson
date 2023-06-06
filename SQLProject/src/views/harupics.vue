@@ -47,6 +47,7 @@ getharu()
 
     <div class="window">
       <h1>${{ store.cartTotal }}</h1>
+      <div class="li"><RouterLink to="/CartView">View Cart</RouterLink></div>
       <div class="line"></div>
     </div>
 
@@ -56,7 +57,7 @@ getharu()
 
         <div class="description">
           <h3 class="display-title">{{ haru.name }}</h3>
-          <h4 class="display-price">{{ haru.price }}</h4>
+          <h4 class="display-price">${{ haru.price }}</h4>
           <button class="btn" @click="AddCart(haru.price)">ADD TO CART</button>
         </div>
       </div>
@@ -97,6 +98,22 @@ getharu()
   border-radius: 30px;
   padding: 3rem;
   font-family: 'Nunito', sans-serif;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #ffffff;
+  color: #000000;
+  font-style: bold;
+  border: none;
+  border-radius: 30px;
+
+  font-family: 'Nunito', sans-serif;
+}
+
+.btn:hover {
+  background-color: #bebebe;
 }
 
 .line {

@@ -43,23 +43,6 @@ export default {}
   font-family: 'Nunito', sans-serif;
 }
 
-.window {
-  padding: 5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  font-family: 'Nunito', sans-serif;
-}
-
-.line {
-  background-color: black;
-  margin: 1px;
-  width: 60rem;
-  height: 6px;
-  align-content: center;
-}
-
 .logo {
   align-self: center;
 }
