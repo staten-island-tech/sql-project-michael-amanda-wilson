@@ -60,7 +60,9 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { supabase } from '..client/supabase.js'
+</script>
 
 <style scoped>
 * {
