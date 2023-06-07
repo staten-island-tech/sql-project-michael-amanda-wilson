@@ -33,6 +33,17 @@ const router = createRouter({
       component: () => import('../views/haruabout.vue')
     }
   ]
-})
+});
+router.beforeEach((to, from, next) => {
+  const auth = authStore();
+  if (
+    to.matched.some((record) => record.meta.requireLogin) &&
+    auth.currentUser === null
+){
+  next('/sign-in');
+} else {
+  next();
+  }
+  );
 
 export default router
