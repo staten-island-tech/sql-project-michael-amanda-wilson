@@ -3,9 +3,14 @@ import { supabase } from '../lib/supabaseClient.js'
 import { ref, onMounted } from 'vue'
 import { useCounterStore } from '../stores/counter'
 const store = useCounterStore()
+const cart = []
 async function getharu() {
   const { data } = await supabase.from('haru').select()
   store.harus = data
+}
+
+function addHaru(haru) {
+  this.cart.push(haru)
 }
 
 async function AddCart(x) {
@@ -58,7 +63,7 @@ getharu()
         <div class="description">
           <h3 class="display-title">{{ haru.name }}</h3>
           <h4 class="display-price">${{ haru.price }}</h4>
-          <button class="btn" @click="AddCart(haru.price)">ADD TO CART</button>
+          <button class="btn" @click="AddCart(haru.price), addHaru(haru)">ADD TO CART</button>
         </div>
       </div>
     </div>
