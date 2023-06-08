@@ -139,6 +139,15 @@ body {
   border: 1px solid #ccc;
   border-radius: 3px;
   font-family: 'Nunito', sans-serif;
+  background-color: #a2a2a26d;
+  color: #ffffff;
+  font-style: italics;
+}
+
+input::placeholder {
+  color: #ffffff;
+  font-size: 1.2em;
+  font-style: bold;
 }
 
 .form-container button {
@@ -146,6 +155,7 @@ body {
   padding: 10px;
   background-color: #ffffff;
   color: #000000;
+  font-style: bold;
   border: none;
   border-radius: 3px;
   cursor: pointer;
@@ -153,7 +163,7 @@ body {
 }
 
 .form-container button:hover {
-  background-color: #b8b8b8;
+  background-color: #e6e6e6;
 }
 
 .form-container .toggle-form {

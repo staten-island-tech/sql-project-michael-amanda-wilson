@@ -112,6 +112,9 @@
 .line {
   background-color: black;
   margin: 20px;
+  background-color: black;
+  margin: 1px;
+  width: 6px;
 }
 
 .left,
