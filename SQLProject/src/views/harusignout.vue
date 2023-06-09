@@ -28,18 +28,9 @@
       </header>
 
       <div class="form-container">
-        <form id="loginForm" class="login-form" @submit.prevent="login">
-          <h2>Login</h2>
-          <div>
-            <input type="email" id="email" placeholder="Email" required />
-          </div>
-          <div>
-            <input type="password" id="password" placeholder="Password" required />
-          </div>
-          <button type="submit">Login</button>
-          <RouterLink to="/harusignup" style="color: white"
-            >Dont have an account: Register here</RouterLink
-          >
+        <form id="signOutForm" class="signout-form" @submit.prevent="signout">
+          <h2>Sign Out</h2>
+          <button type="submit">Sign Out</button>
         </form>
       </div>
     </div>
@@ -53,19 +44,13 @@ import router from '../router'
 
 const userSession = userSessionStore()
 
-async function login() {
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email: email.value,
-    password: password.value
-  })
-
+async function signout() {
+  const { error } = await supabase.auth.signOut().then(router.push('/'))
   if (error) {
     alert(error)
   } else {
-    alert('Successfully logged in')
-    userSession.session = data
-    document.getElementById('loginForm').reset()
-    router.push('/harusignout')
+    alert('Successfully logged out')
+    userSession.session = null
   }
 }
 </script>
@@ -120,19 +105,19 @@ body {
   transition: transform 0.6s ease-in-out;
 }
 
-.form-container.login-form {
+.form-container.signout-form {
   transform: translateX(400px);
 }
 
-.form-container.login-form {
+.form-container.signout-form {
   transform: translateX(0);
 }
 
-.form-container.login-form .login-form {
+.form-container.signout-form .signout-form {
   transform: translateX(-400px);
 }
 
-.form-container.login-form h2 {
+.form-container.signout-form h2 {
   margin-bottom: 30px;
 }
 

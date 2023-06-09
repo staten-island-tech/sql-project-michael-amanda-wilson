@@ -52,10 +52,14 @@
         </section>
       </div>
     </div>
+    <div>{{ userSession.session ? 'Logged In' : 'Logged Out' }}</div>
   </div>
 </template>
 
-<script></script>
+<script setup>
+import { userSessionStore } from '../client/userSession'
+const userSession = userSessionStore()
+</script>
 
 <style scoped>
 .container {

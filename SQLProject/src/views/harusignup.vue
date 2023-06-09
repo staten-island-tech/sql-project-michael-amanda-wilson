@@ -28,19 +28,27 @@
       </header>
 
       <div class="form-container">
-        <form id="loginForm" class="login-form" @submit.prevent="login">
-          <h2>Login</h2>
-          <div>
-            <input type="email" id="email" placeholder="Email" required />
-          </div>
-          <div>
-            <input type="password" id="password" placeholder="Password" required />
-          </div>
-          <button type="submit">Login</button>
-          <RouterLink to="/harusignup" style="color: white"
-            >Dont have an account: Register here</RouterLink
-          >
+        <h2>Register</h2>
+        <form id="registerForm" @submit.prevent="signUp">
+          <input
+            name="email"
+            type="email"
+            id="email"
+            placeholder="Email"
+            bind:value="{email}"
+            required
+          />
+          <input
+            name="password"
+            type="password"
+            id="password"
+            placeholder="Password"
+            bind:value="{password}"
+            required
+          />
+          <button type="submit">Register</button>
         </form>
+        <RouterLink to="/harulogin" style="color: white">Back to Login</RouterLink>
       </div>
     </div>
   </div>
@@ -48,24 +56,17 @@
 
 <script setup>
 import { supabase } from '../lib/supabaseClient'
-import { userSessionStore } from '../client/userSession'
-import router from '../router'
 
-const userSession = userSessionStore()
-
-async function login() {
-  const { data, error } = await supabase.auth.signInWithPassword({
+async function signUp() {
+  const { error } = await supabase.auth.signUp({
     email: email.value,
     password: password.value
   })
-
   if (error) {
     alert(error)
   } else {
-    alert('Successfully logged in')
-    userSession.session = data
-    document.getElementById('loginForm').reset()
-    router.push('/harusignout')
+    alert('Successfully signed up')
+    document.getElementById('registerForm').reset()
   }
 }
 </script>
@@ -120,7 +121,7 @@ body {
   transition: transform 0.6s ease-in-out;
 }
 
-.form-container.login-form {
+.form-container.register-form {
   transform: translateX(400px);
 }
 
@@ -128,11 +129,11 @@ body {
   transform: translateX(0);
 }
 
-.form-container.login-form .login-form {
+.form-container.register-form .login-form {
   transform: translateX(-400px);
 }
 
-.form-container.login-form h2 {
+.form-container.register-form h2 {
   margin-bottom: 30px;
 }
 
