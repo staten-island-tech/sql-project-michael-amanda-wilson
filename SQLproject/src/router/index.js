@@ -68,6 +68,7 @@ const router = createRouter({
 })
 router.beforeEach((to, from, next) => {
   const userSession = userSessionStore()
+  // console.log(userSession.session)
   if (to.path === '/harulogin') {
     if (userSession.session) {
       return next('/harusignout')

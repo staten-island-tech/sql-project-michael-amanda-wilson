@@ -50,6 +50,7 @@
 import { supabase } from '../lib/supabaseClient'
 import { userSessionStore } from '../client/userSession'
 import router from '../router'
+import { useStorage } from '@vueuse/core'
 
 const userSession = userSessionStore()
 
@@ -63,7 +64,7 @@ async function login() {
     alert(error)
   } else {
     alert('Successfully logged in')
-    userSession.session = data
+    userSession.session = useStorage('session', data)
     document.getElementById('loginForm').reset()
     router.push('/harusignout')
   }
