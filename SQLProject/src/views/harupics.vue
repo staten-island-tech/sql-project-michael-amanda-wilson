@@ -2,6 +2,11 @@
 import { supabase } from '../lib/supabaseClient.js'
 import { ref, onMounted } from 'vue'
 import { useCounterStore } from '../stores/counter'
+import { userSessionStore } from '../client/userSession'
+import router from '../router'
+
+const userSession = userSessionStore()
+
 const store = useCounterStore()
 async function getharu() {
   const { data } = await supabase.from('haru').select()
@@ -62,6 +67,7 @@ getharu()
         </div>
       </div>
     </div>
+    <div>{{ userSession.session ? 'Logged In' : 'Logged Out' }}</div>
   </div>
 </template>
 

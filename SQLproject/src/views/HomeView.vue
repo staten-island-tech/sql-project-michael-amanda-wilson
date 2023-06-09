@@ -115,14 +115,17 @@
           </div>
         </div>
       </main>
-      <div class="home-footer"></div>
+      <div class="home-footer">{{ userSession.session ? 'Logged In' : 'Logged Out' }}</div>
     </section>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { RouterLink, RouterView, useRouter } from 'vue-router'
+import { supabase } from '../lib/supabaseClient'
+import { userSessionStore } from '../client/userSession'
+import router from '../router'
+
+let userSession = userSessionStore()
 </script>
 
 <style scoped>
