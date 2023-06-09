@@ -1,24 +1,37 @@
 <script setup>
 import { supabase } from '../lib/supabaseClient.js'
 import { ref, onMounted } from 'vue'
-import { useCounterStore } from '../stores/counter'
 import { userSessionStore } from '../client/userSession'
 import router from '../router'
 
 const userSession = userSessionStore()
 
-const store = useCounterStore()
+const harus = ref([])
+const total = ref(0)
 async function getharu() {
   const { data } = await supabase.from('haru').select()
-  store.harus = data
+  harus.value = data
 }
 
-async function AddCart(x) {
-  store.cartTotal = store.cartTotal + x
+async function getTotalItems() {
+  //Aggregate (Count)
+  const { data, count } = await supabase.from('haru').select('*', { count: 'exact' })
+  total.value = JSON.stringify(count)
 }
-getharu()
-console.log(store.harus)
-getharu()
+
+async function AddCart(himage, hname, hprice) {
+  const {
+    data: { user }
+  } = await supabase.auth.getUser()
+  const { data, error } = await supabase
+    .from('cart')
+    .insert([{ image: himage, name: hname, price: hprice, users: user.id }])
+}
+
+onMounted(() => {
+  getharu()
+  getTotalItems()
+})
 </script>
 
 <template>
@@ -51,23 +64,24 @@ getharu()
     </header>
 
     <div class="window">
-      <h1>${{ store.cartTotal }}</h1>
       <div class="li"><RouterLink to="/CartView">View Cart</RouterLink></div>
       <div class="line"></div>
     </div>
 
     <div class="display">
-      <div v-for="haru in store.harus">
+      <div v-for="haru in harus">
         <div class="display-card"><img class="display-img" v-bind:src="haru.image" /></div>
 
         <div class="description">
           <h3 class="display-title">{{ haru.name }}</h3>
           <h4 class="display-price">${{ haru.price }}</h4>
-          <button class="btn" @click="AddCart(haru.price)">ADD TO CART</button>
+          <button class="btn" @click="AddCart(haru.image, haru.name, haru.price)">
+            ADD TO CART
+          </button>
         </div>
       </div>
+      <div>TOTAL ITEMS: {{ total }}</div>
     </div>
-    <div>{{ userSession.session ? 'Logged In' : 'Logged Out' }}</div>
   </div>
 </template>
 

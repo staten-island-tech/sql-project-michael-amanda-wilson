@@ -30,6 +30,7 @@
       <div class="form-container">
         <form id="signOutForm" class="signout-form" @submit.prevent="signout">
           <h2>Sign Out</h2>
+          <h3>Logged in As: {{ useremail }}</h3>
           <button type="submit">Sign Out</button>
         </form>
       </div>
@@ -41,8 +42,21 @@
 import { supabase } from '../lib/supabaseClient'
 import { userSessionStore } from '../client/userSession'
 import router from '../router'
+import { useStorage } from '@vueuse/core'
+import { ref, onMounted } from 'vue'
 
-const userSession = userSessionStore()
+let userSession = userSessionStore()
+const useremail = ref('')
+async function getUser() {
+  const {
+    data: { user }
+  } = await supabase.auth.getUser()
+  useremail.value = user.email
+}
+
+onMounted(() => {
+  getUser()
+})
 
 async function signout() {
   const { error } = await supabase.auth.signOut().then(router.push('/'))

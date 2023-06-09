@@ -115,7 +115,7 @@
           </div>
         </div>
       </main>
-      <div class="home-footer">{{ userSession.session ? 'Logged In' : 'Logged Out' }}</div>
+      <div class="home-footer">{{ useremail }}</div>
     </section>
   </div>
 </template>
@@ -124,6 +124,7 @@
 import { supabase } from '../lib/supabaseClient'
 import { userSessionStore } from '../client/userSession'
 import router from '../router'
+import { ref, onMounted } from 'vue'
 
 let userSession = userSessionStore()
 </script>
