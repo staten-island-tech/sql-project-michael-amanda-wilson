@@ -4,7 +4,10 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
 import App from './App.vue'
-import router from './router'
+import router from './router/router.js'
+import piniaPluginPersistedState from 'pinia-plugin-persistedstate'
+
+const pinia = createPinia()
 
 const app = createApp(App)
 
