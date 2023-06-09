@@ -58,14 +58,18 @@
 import { supabase } from '../lib/supabaseClient'
 
 async function signUp() {
-  const { error } = await supabase.auth.signUp({
+  const { data, error } = await supabase.auth.signUp({
     email: email.value,
     password: password.value
   })
+  console.log(data)
   if (error) {
     alert(error)
   } else {
     alert('Successfully signed up')
+    const { error } = await supabase
+      .from('users')
+      .insert([{ id: data.user.id, email: email.value }])
     document.getElementById('registerForm').reset()
   }
 }

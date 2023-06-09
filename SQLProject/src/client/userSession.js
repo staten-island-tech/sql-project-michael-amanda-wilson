@@ -1,8 +1,9 @@
 import { defineStore } from 'pinia'
+import { useStorage } from '@vueuse/core'
 
 export const userSessionStore = defineStore({
   id: 'userSession',
   state: () => ({
-    session: null
+    session: useStorage('session', null)
   })
 })
